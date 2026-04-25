@@ -323,13 +323,13 @@
       <div class="hero-panel">
         <div class="hero-content">
           <div class="hero-copy">
-            <h1>Escolha<br>a sua planta<br>ideal.</h1>
+            <h1>Descubra a planta ideal para o seu momento.</h1>
           </div>
           <div class="hero-metrics">
             <div class="metric"><strong>200</strong><span>Apartamentos na torre</span></div>
             <div class="metric"><strong>24</strong><span>Pavimentos totais</span></div>
             <div class="metric"><strong>23</strong><span>Andares</span></div>
-            <div class="metric"><strong>R$ 5 mil</strong><span>Entrada promocional de<br>R$ 5 mil ate dia 30</span></div>
+            <div class="metric"><strong>R$ 5 mil</strong><span>Entrada promocional de R$ 5 mil ate dia 30</span></div>
           </div>
         </div>
       </div>
@@ -473,52 +473,52 @@
       return { manha: "Sol da manha", sem_sol: "Sem sol", tarde: "Sol da tarde" }[value] || value;
     }
 
-    function renderCard(unit) {
-      return `
-        <article class="unit-card">
-          <div class="unit-plant">
-            <img src="${unit.planta}" alt="Planta da coluna ${unit.coluna}">
+
+  function renderCard(unit) {
+    return `
+      <article class="unit-card">
+        <div class="unit-plant">
+          <img src="${unit.planta}" alt="Planta da coluna ${unit.coluna}">
+        </div>
+        <div class="unit-copy">
+          <div class="unit-head">
+            <div class="unit-title">
+              <small>Unidade ${unit.id}</small>
+              <h3>Coluna ${unit.coluna}</h3>
+              <p>Pavimento ${unit.pavimento}º</p>
+            </div>
+            <span class="pill ${unit.posicao_solar}">${labelSolar(unit.posicao_solar)}</span>
           </div>
-          <div class="unit-copy">
-            <div class="unit-head">
-              <div class="unit-title">
-                <small>Unidade ${unit.id}</small>
-                <h3>Coluna ${unit.coluna}</h3>
-                <p>Pavimento ${unit.pavimento}º</p>
-              </div>
-              <span class="pill ${unit.posicao_solar}">${labelSolar(unit.posicao_solar)}</span>
-            </div>
 
-            <div class="value-box">
-              <small>Valor total a partir de</small>
-              <strong>${money.format(unit.valor_total)}</strong>
-            </div>
-
-            <div class="detail-grid">
-              <div class="detail-row"><small>Coluna</small><strong>${unit.coluna}</strong></div>
-              <div class="detail-row"><small>Area privativa</small><strong>${unit.area_privativa.toLocaleString("pt-BR")} m²</strong></div>
-              <div class="detail-row"><small>Tipologia</small><strong>${unit.tipologia_curta}</strong></div>
-              <div class="detail-row"><small>Posicao solar</small><strong>${unit.posicao_solar_label}</strong></div>
-              <div class="detail-row"><small>Situacao</small><strong>${labelStatus(unit.status)}</strong></div>
-              <div class="detail-row"><small>Entrada</small><strong>${money.format(unit.entrada)}</strong></div>
-              <div class="detail-row"><small>Mensal</small><strong>${money.format(unit.mensal)}</strong></div>
-              <div class="detail-row"><small>Anual</small><strong>${money.format(unit.anual)}</strong></div>
-              <div class="detail-row"><small>Financiamento</small><strong>${money.format(unit.financiamento)}</strong></div>
-            </div>
-
-            <div class="promo-box">
-              <strong>${money.format(5000)}</strong>
-              <span>Entrada promocional de R$ 5.000 ate dia 30.</span>
-            </div>
-
-            <div class="unit-actions">
-              <a class="card-button primary" href="${toWhatsApp(unit)}" target="_blank" rel="noopener">Quero esta unidade</a>
-              <a class="card-button ghost" href="#top">Comparar outra unidade</a>
-            </div>
+          <div class="value-box">
+            <small>A partir de</small>
+            <strong>${money.format(unit.valor_total)}</strong>
           </div>
-        </article>
-      `;
-    }
+
+          <div class="detail-grid">
+            <div class="detail-row"><small>Tipologia</small><strong>${unit.tipologia_curta}</strong></div>
+            <div class="detail-row"><small>Area privativa</small><strong>${unit.area_privativa.toLocaleString("pt-BR")} m²</strong></div>
+            <div class="detail-row"><small>Entrada</small><strong>${money.format(unit.entrada)}</strong></div>
+            <div class="detail-row"><small>Mensal</small><strong>${money.format(unit.mensal)}</strong></div>
+            <div class="detail-row"><small>Anual</small><strong>${money.format(unit.anual)}</strong></div>
+            <div class="detail-row"><small>Financiamento</small><strong>${money.format(unit.financiamento)}</strong></div>
+          </div>
+
+          <div class="promo-box">
+            <strong>${money.format(5000)}</strong>
+            <span>Entrada promocional de R$ 5.000 ate dia 30.</span>
+          </div>
+
+          <div class="unit-actions">
+            <a class="card-button primary" href="${toWhatsApp(unit)}" target="_blank" rel="noopener">Quero esta unidade</a>
+            <a class="card-button ghost" href="#top">Comparar outra unidade</a>
+          </div>
+        </div>
+      </article>
+    `;
+  }
+
+
 
     function currentUnits() {
       return state.units
