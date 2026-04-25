@@ -486,8 +486,8 @@
             </div>
 
             <div class="promo-box">
-              <strong>${money.format(unit.entrada_promocional)}</strong>
-              <span>Entrada promocional com desconto de R$ 5.000 ate dia 30.</span>
+              <strong>${money.format(5000)}</strong>
+              <span>Entrada promocional de R$ 5.000 ate dia 30.</span>
             </div>
 
             <div class="unit-actions">
